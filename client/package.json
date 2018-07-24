@@ -1,0 +1,32 @@
+{
+  "name": "apollo-accounts-password-client",
+  "version": "0.1.0",
+  "description": "Fullstack accounts for Apollo: client side",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel index.js --out-dir dist",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Loren Sands-Ramshaw (http://lorensr.me)",
+  "license": "MIT",
+  "homepage": "https://github.com/flyblackbird/apollo-accounts#readme",
+  "bugs": {
+    "url": "https://github.com/flyblackbird/apollo-accounts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/flyblackbird/apollo-accounts.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1"
+  },
+  "dependencies": {
+    "@accounts/client": "^0.3.0-beta.22",
+    "@accounts/client-password": "^0.3.0-beta.22",
+    "@accounts/graphql-client": "^0.3.0-beta.22"
+  }
+}
