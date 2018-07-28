@@ -3,9 +3,12 @@ import { AccountsClientPassword } from '@accounts/client-password'
 import GraphQLClient from '@accounts/graphql-client'
 
 export default class Accounts {
-  constructor(apolloClient) {
+  constructor(apolloClient, accountsClientOptions) {
     const accountsGraphQL = new GraphQLClient({ graphQLClient: apolloClient })
-    const accountsClient = new AccountsClient({}, accountsGraphQL)
+    const accountsClient = new AccountsClient(
+      accountsClientOptions,
+      accountsGraphQL
+    )
     const accountsPassword = new AccountsClientPassword(accountsClient)
 
     this.accountsGraphQL = accountsGraphQL
