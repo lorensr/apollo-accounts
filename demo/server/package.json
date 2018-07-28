@@ -5,7 +5,8 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development babel-watch server.js"
+    "start": "NODE_ENV=development babel-watch server.js",
+    "start-mongo": "docker-compose up -d"
   },
   "dependencies": {
     "@accounts/database-manager": "0.3.0-beta.20",

@@ -13,7 +13,7 @@ const start = async () => {
   //   { useNewUrlParser: true }
   // )
   // const db = mongoose.connection
-  
+
   // OR:
   // const client = await mongodb.MongoClient.connect(process.env.MONGO_URL);
   const client = await mongodb.MongoClient.connect(
@@ -25,7 +25,11 @@ const start = async () => {
 
   const accounts = createApolloAccounts({
     db,
-    tokenSecret: 'secret'
+    tokenSecret: process.env.TOKEN_SECRET,
+    siteUrl:
+      process.env.NODE_ENV === 'production'
+        ? 'https://myapp.com'
+        : 'http://localhost:3000'
   })
 
   const typeDefs = `
@@ -37,10 +41,16 @@ const start = async () => {
     publicField: String
     privateField: String @auth
     privateType: PrivateType
+    adminField: String @auth
   }
 
   type Mutation {
     _: String
+  }
+
+  extend type User {
+    firstName: String
+    lastName: String
   }
   `
 
@@ -50,7 +60,16 @@ const start = async () => {
       privateField: () => 'private',
       privateType: () => ({
         field: () => 'private'
-      })
+      }),
+      adminField: (roots, args, context) => {
+        if (context.user.admin) {
+          return 'admin field'
+        }
+      }
+    },
+    User: {
+      firstName: () => 'first',
+      lastName: () => 'last'
     }
   }
 
@@ -64,7 +83,8 @@ const start = async () => {
 
   const server = new ApolloServer({
     schema,
-    context: ({ req }) => accountsContext(req)
+    context: ({ req }) => accountsContext(req),
+    formatError: e => console.log(e) || e
   })
 
   server.listen(4000).then(({ url }) => {
