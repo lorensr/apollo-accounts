@@ -7,18 +7,8 @@ import { merge } from 'lodash'
 import mongodb from 'mongodb'
 
 const start = async () => {
-  // await mongoose.connect(
-  //   // 'mongodb://localhost:27017/accounts-js-graphql-example'
-  //   'mongodb://localhost:3001/meteor',
-  //   { useNewUrlParser: true }
-  // )
-  // const db = mongoose.connection
-
-  // OR:
-  // const client = await mongodb.MongoClient.connect(process.env.MONGO_URL);
   const client = await mongodb.MongoClient.connect(
-    // 'mongodb://localhost:3001/meteor'
-    'mongodb://localhost:27017/apollo-accounts-demo',
+    process.env.MONGO_URL || 'mongodb://localhost:27017/apollo-accounts-demo',
     { useNewUrlParser: true }
   )
   const db = client.db()
@@ -50,7 +40,6 @@ const start = async () => {
 
   extend type User {
     firstName: String
-    lastName: String
   }
   `
 
@@ -61,15 +50,14 @@ const start = async () => {
       privateType: () => ({
         field: () => 'private'
       }),
-      adminField: (roots, args, context) => {
-        if (context.user.admin) {
+      adminField: (root, args, context) => {
+        if (context.user.isAdmin) {
           return 'admin field'
         }
       }
     },
     User: {
-      firstName: () => 'first',
-      lastName: () => 'last'
+      firstName: () => 'first'
     }
   }
 
