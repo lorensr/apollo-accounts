@@ -27,18 +27,19 @@ Based on [accounts-js](https://accounts-js.netlify.com/).
 ## Documentation
 
 **[apollo-accounts-password-client](client/README.md)**
+
 **[apollo-accounts-password-server](server/README.md)**
 
 ## Demos
-
-- [Web](#web)
-- [React Native](#react-native)
-- [Server](#server)
 
 ```
 git clone https://github.com/flyblackbird/apollo-accounts
 cd apollo-accounts
 ```
+
+- [Web](#web)
+- [React Native](#react-native)
+- [Server](#server)
 
 ### Web
 

@@ -54,7 +54,7 @@ Accounts.login({
 
 ## Demo
 
-See [flyblackbird/apollo-accounts](https://github.com/flyblackbird/apollo-accounts/#demo)
+See [flyblackbird/apollo-accounts](https://github.com/flyblackbird/apollo-accounts/#demos)
 
 ## API
 
@@ -65,7 +65,7 @@ Below we list all the methods of `ApolloAccounts`. Most methods return a promise
 
 ### Constructor
 
-`new ApolloAccounts(`[apolloClientInstance](https://www.apollographql.com/docs/react/api/apollo-client.html#apollo-client), [accountsClientOptions](https://github.com/accounts-js/accounts/blob/master/packages/client/src/types/options.ts)`)`
+`new ApolloAccounts(`[apolloClientInstance](https://www.apollographql.com/docs/react/api/apollo-client.html#apollo-client)`, `[accountsClientOptions](https://github.com/accounts-js/accounts/blob/master/packages/client/src/types/options.ts)`)`
 
 Usually `accountsClientOptions` is left out, unless you're in React Native:
 
@@ -125,7 +125,7 @@ if (!tokens) {
 const user = Accounts.getUser(tokens.accessToken)
 ```
 
-Fetches the user doc, given the `accessToken` returned by `refreshSession`.
+Fetches the user doc, given the `accessToken` returned by [`refreshSession()`](#refreshsession).
 
 ### sendVerificationEmail
 
@@ -169,7 +169,7 @@ Sends an email which contains a link to this app with a secret token in the URL.
 
 `twoFactorSet(secret, oneTimeCode)`
 
-- `secret` obtained from [`getTwoFactorSecret`](#getTwoFactorSecret)
+- `secret` obtained from [`getTwoFactorSecret`](#gettwofactorsecret)
 - `oneTimeCode` entered by the user after they use an app like Authy to scan the QR code.
 
 ### impersonate
@@ -204,4 +204,6 @@ const accountsClient = new AccountsClient(
 const accountsPassword = new AccountsClientPassword(accountsClient)
 ```
 
-[*Credits*](https://github.com/flyblackbird/apollo-accounts/#credits)
+---
+
+[Credits](https://github.com/flyblackbird/apollo-accounts/#credits)

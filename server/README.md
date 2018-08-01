@@ -106,7 +106,7 @@ start()
 
 ## Demo
 
-See [flyblackbird/apollo-accounts](https://github.com/flyblackbird/apollo-accounts/#demo)
+See [flyblackbird/apollo-accounts](https://github.com/flyblackbird/apollo-accounts/#demos)
 
 ## API
 
@@ -161,7 +161,7 @@ sendMail: ({ from, subject, to, text, html }) => {
 
 - `options.emailTemplates`: templates for auth emails. [Format](https://github.com/accounts-js/accounts/blob/master/packages/server/src/utils/email.ts). Defaults:
 
-```
+```js
 {
   from: 'accounts-js <no-reply@accounts-js.com>',
   verifyEmail: {
@@ -228,4 +228,6 @@ This package is like Apollo Boost—if at some point you need more configuration
 
 See [index.js](https://github.com/flyblackbird/apollo-accounts/tree/master/server/index.js)
 
-[*Credits*](https://github.com/flyblackbird/apollo-accounts/#credits)
+---
+
+[Credits](https://github.com/flyblackbird/apollo-accounts/#credits)
