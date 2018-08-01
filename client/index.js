@@ -31,10 +31,16 @@ export default class Accounts {
       accountsPassword
     )
     this.resetPassword = accountsPassword.resetPassword.bind(accountsPassword)
+    this.changePassword = accountsPassword.changePassword.bind(accountsPassword)
 
     this.twoFactorSet = accountsGraphQL.twoFactorSet.bind(accountsGraphQL)
     this.getTwoFactorSecret = accountsGraphQL.getTwoFactorSecret.bind(
       accountsGraphQL
+    )
+
+    this.impersonate = accountsClient.impersonate.bind(accountsClient)
+    this.stopImpersonation = accountsClient.stopImpersonation.bind(
+      accountsClientOptions
     )
   }
 }
