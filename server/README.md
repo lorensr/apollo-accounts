@@ -11,6 +11,8 @@ Server side of [Apollo Accounts Password](https://github.com/flyblackbird/apollo
 - [API](#api)
   - [createApolloAccounts](#createapolloaccounts)
   - [accountsContext](#accountscontext)
+  - [onLogin](#onlogin)
+  - [onCreateUser](#oncreateuser)
 - [Eject](#eject)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -219,6 +221,20 @@ const server = new ApolloServer({
   context: ({ req }) => accountsContext(req)
 })
 ```
+
+### onLogin
+
+`onLogin(cb)`
+
+`cb` is called each time a user successfully logs in via [`login()`](https://github.com/flyblackbird/apollo-accounts/tree/master/client#login). It's given an object with information about the request, including a `user` property.
+
+`cb` is not called when an access token is refreshed.
+
+### onCreateUser
+
+`onCreateUser(cb)`
+
+`cb` is called after a user is successfully created (by a call to [`createUser()`](https://github.com/flyblackbird/apollo-accounts/tree/master/client#createuser)). It's given the user record that was saved in the database.
 
 ## Eject
 

@@ -84,7 +84,9 @@ createUser({ email, password })
 createUser({ username, password })
 ```
 
-[Does not](https://github.com/accounts-js/accounts/issues/377) automatically log the user in.
+Argument may contain a `profile` property object with arbitrary data. 
+
+`createUser()` [does not](https://github.com/accounts-js/accounts/issues/377) automatically log the user in.
 
 ### login 
 

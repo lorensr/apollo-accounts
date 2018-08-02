@@ -1,10 +1,15 @@
 import { ApolloServer, makeExecutableSchema } from 'apollo-server'
 import {
   createApolloAccounts,
-  accountsContext
+  accountsContext,
+  onLogin,
+  onCreateUser
 } from 'apollo-accounts-password-server'
 import { merge } from 'lodash'
 import mongodb from 'mongodb'
+
+onLogin(info => console.log('onLogin', info))
+onCreateUser(user => console.log('onCreateUser', user))
 
 const start = async () => {
   const client = await mongodb.MongoClient.connect(

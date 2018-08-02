@@ -17,6 +17,15 @@ const idProvider = () =>
 
 const dateProvider = date => (date ? date : new Date())
 
+const onLoginHooks = []
+export const onLogin = hook => onLoginHooks.push(hook)
+const callOnLoginHooks = info => onLoginHooks.forEach(hook => hook(info))
+
+const onCreateUserHooks = []
+export const onCreateUser = hook => onCreateUserHooks.push(hook)
+const callOnCreateUserHooks = user =>
+  onCreateUserHooks.forEach(hook => hook(user))
+
 const defaultOptions = {
   tokenSecret: 'insecure',
   tokenConfigs: {
@@ -33,7 +42,7 @@ export const createApolloAccounts = ({ db, ...givenOptions }) => {
   }
   if (!givenOptions.tokenSecret) {
     console.log(
-      'Must provide a tokenSecret (long random string) to createApolloAccounts()'
+      'Warning: Must provide a tokenSecret (long random string) to createApolloAccounts()'
     )
   }
 
@@ -57,6 +66,11 @@ export const createApolloAccounts = ({ db, ...givenOptions }) => {
       password: new AccountsPassword({ passwordHashAlgorithm: 'sha256' })
     }
   )
+
+  // full list of hooks:
+  // https://github.com/accounts-js/accounts/blob/master/packages/server/src/utils/server-hooks.ts
+  accountsServer.on('LoginSuccess', callOnLoginHooks)
+  accountsServer.on('CreateUserSuccess', callOnCreateUserHooks)
 
   return createAccountsGraphQL(accountsServer, { extend: true })
 }
