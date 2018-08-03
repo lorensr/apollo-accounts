@@ -142,6 +142,8 @@ This package is configured to use the same hashing algorithms as Meteor's `accou
 
 Some of the API methods are named differently (for instance `login()` instead of `loginWithPassword()`) or act differently (for instance taking different arguments, or in the case of `onCreateUser()`, is executed after the user is stored instead of beforehand). Here are the [client](https://github.com/flyblackbird/apollo-accounts/tree/master/client#api) and [server](https://github.com/flyblackbird/apollo-accounts/tree/master/server#api) APIs.
 
+There is no `Meteor.user()` (or Tracker at all)—we recommend making a [`getUser()`](https://github.com/flyblackbird/apollo-accounts/tree/master/client#getuser) query and subsequently reading the user object from the apollo cache for components that need it (for instance using a `withUser` HOC). The alternative is making the query at the top of the component tree and passing the `user` down as a prop, but for most apps that results in a ton of prop drilling.
+
 ## Contributing
 
 Build and link packages:
