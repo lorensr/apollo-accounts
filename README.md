@@ -2,7 +2,7 @@
 
 Full-stack JS accounts system for Apollo and MongoDB
 
-Compatible with Meteor's `accounts-password`.
+[Compatible](#meteor-compatibility) with Meteor's `accounts-password`.
 
 Based on [accounts-js](https://accounts-js.netlify.com/).
 
@@ -18,6 +18,7 @@ Based on [accounts-js](https://accounts-js.netlify.com/).
     - [MongoDB](#mongodb)
     - [Start server](#start-server)
     - [Query server](#query-server)
+- [Meteor compatibility](#meteor-compatibility)
 - [Contributing](#contributing)
   - [React Native](#react-native-1)
 - [Credits](#credits)
@@ -134,6 +135,12 @@ query {
   privateField
 }
 ```
+
+## Meteor compatibility
+
+This package is configured to use the same hashing algorithms as Meteor's `accounts-password`, and both it and Meteor stores user documents in a `users` MongoDB collection, and the documents are in the same format, including a the `services.password.bcrypt` field. So you can use the same database to back both a Meteor app and a node app using this package—a user created with one app will be able to login with the same username/email and password in the other app. If you are migrating away from Meteor, then after you've switched over to the node app, you can delete all of the `services.resume` fields, as this package does not use them. (Instead, it creates a collection called `sessions`.) 
+
+Some of the API methods are named differently (for instance `login()` instead of `loginWithPassword()`) or act differently (for instance taking different arguments, or in the case of `onCreateUser()`, is executed after the user is stored instead of beforehand). Here are the [client](https://github.com/flyblackbird/apollo-accounts/tree/master/client#api) and [server](https://github.com/flyblackbird/apollo-accounts/tree/master/server#api) APIs.
 
 ## Contributing
 
