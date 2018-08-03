@@ -16,7 +16,7 @@ class Home extends Component {
       this.props.history.push('/login')
       return
     }
-    const user = await Accounts.getUser(tokens ? tokens.accessToken : '')
+    const user = await Accounts.getUser()
     await this.setState({ user })
   }
 
@@ -39,6 +39,7 @@ class Home extends Component {
     return (
       <div>
         <Typography gutterBottom={true}>You are logged in</Typography>
+        <Typography gutterBottom={true}>User id: {user.id}</Typography>
         <Typography gutterBottom={true}>
           Email: {user.emails[0].address}
         </Typography>
@@ -51,7 +52,9 @@ class Home extends Component {
           </Button>
         )}
 
-        <Link to="two-factor">Set up 2fa</Link>
+        <div>
+          <Link to="two-factor">Set up 2fa</Link>
+        </div>
 
         <Button variant="raised" color="primary" onClick={this.onLogout}>
           Logout

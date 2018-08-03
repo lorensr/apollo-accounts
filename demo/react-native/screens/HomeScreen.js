@@ -97,7 +97,7 @@ export default class HomeScreen extends React.Component {
         user: { username }
       })
       console.log(result)
-      const user = await Accounts.getUser(result.tokens.accessToken)
+      const user = await Accounts.getUser()
       this.setState({ user })
       console.log(user)
     } catch (err) {

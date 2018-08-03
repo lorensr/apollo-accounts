@@ -107,7 +107,11 @@ Accounts.login({ password: 'foo', user: { email: 'bar@example.com' } })
 
 Gets the login tokens from LocalStorage, or if the `accessToken` is expired, refreshes it (i.e. gets a new `accessToken` from the server using the `refreshToken`).
 
-If it returns `null`, the `refreshToken` is expired, and the user must login again.
+If it returns `null`, either:
+- The `refreshToken` is expired, and the user must login again.
+- There are no tokens, either because no one has logged in from this client, or they've cleared their LocalStorage.
+
+If you'd like to be able to determine who last logged in to a particular client on page load, you can, during a previous session, save whatever part of the user data (from [`getUser()`](#getuser)) you want in LocalStorage.
 
 ### logout
 
@@ -118,16 +122,10 @@ Tells the server to invalidate the tokens and clears them from memory on the cli
 ### getUser
 
 ```js
-const tokens = Accounts.refreshSession()
-if (!tokens) {
-  redirectTo('/login')
-  return
-}
-
-const user = Accounts.getUser(tokens.accessToken)
+const user = Accounts.getUser()
 ```
 
-Fetches the user doc, given the `accessToken` returned by [`refreshSession()`](#refreshsession).
+Fetches the currently logged-in user record.
 
 ### sendVerificationEmail
 
