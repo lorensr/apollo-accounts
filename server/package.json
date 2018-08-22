@@ -1,6 +1,6 @@
 {
   "name": "apollo-accounts-password-server",
-  "version": "0.1.0",
+  "version": "0.3.0-beta.26",
   "description": "Fullstack accounts for Apollo: server side",
   "main": "dist/index.js",
   "scripts": {
@@ -24,11 +24,11 @@
     "babel-preset-stage-3": "^6.24.1"
   },
   "dependencies": {
-    "@accounts/database-manager": "^0.3.0-beta.26",
-    "@accounts/graphql-api": "^0.3.0-beta.26",
-    "@accounts/mongo": "^0.3.0-beta.26",
-    "@accounts/password": "^0.3.0-beta.26",
-    "@accounts/server": "^0.3.0-beta.26",
+    "@accounts/database-manager": "0.3.0-beta.26",
+    "@accounts/graphql-api": "0.3.0-beta.26",
+    "@accounts/mongo": "0.3.0-beta.26",
+    "@accounts/password": "0.3.0-beta.26",
+    "@accounts/server": "0.3.0-beta.26",
     "graphql": "^0.13.2",
     "graphql-tools": "^3.1.1",
     "lodash": "^4.17.10"

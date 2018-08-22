@@ -1,4 +1,5 @@
 {
+  "name": "apollo-accounts-demo-react-native",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
@@ -10,8 +11,12 @@
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
-    "apollo-accounts-password-client": "^0.1.0",
-    "apollo-boost": "^0.1.10",
+    "apollo-accounts-password-client": "0.3.0-beta.26",
+    "@accounts/client": "0.3.0-beta.26",
+    "@accounts/client-password": "0.3.0-beta.26",
+    "@accounts/graphql-client": "0.3.0-beta.26",
+    "graphql": "^0.13.2",
+    "apollo-boost": "^0.1.14",
     "expo": "^28.0.0",
     "native-base": "^2.7.2",
     "react": "16.3.1",
@@ -19,10 +24,6 @@
     "react-navigation": "2.3.1"
   },
   "devDependencies": {
-    "@accounts/client": "^0.3.0-beta.22",
-    "@accounts/client-password": "^0.3.0-beta.22",
-    "@accounts/graphql-client": "^0.3.0-beta.22",
-    "graphql": "^0.13.2",
     "jest-expo": "^28.0.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "apollo-accounts-password-client",
-  "version": "0.1.0",
+  "version": "0.3.0-beta.26",
   "description": "Fullstack accounts for Apollo: client side",
   "main": "dist/index.js",
   "scripts": {
@@ -25,8 +25,8 @@
     "babel-preset-stage-3": "^6.24.1"
   },
   "dependencies": {
-    "@accounts/client": "^0.3.0-beta.26",
-    "@accounts/client-password": "^0.3.0-beta.26",
-    "@accounts/graphql-client": "^0.3.0-beta.26"
+    "@accounts/client": "0.3.0-beta.26",
+    "@accounts/client-password": "0.3.0-beta.26",
+    "@accounts/graphql-client": "0.3.0-beta.26"
   }
 }
