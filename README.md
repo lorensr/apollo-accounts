@@ -113,17 +113,25 @@ npm start
 
 #### Query server
 
+Determine the SHA256 of your password. For example if it's `passwd`, then:
+
+```
+brew install openssl
+echo -n passwd | openssl dgst -sha256
+0d6be69b264717f2dd33652e212b173104b4a647b7c11ae72e9885f11cd312fb
+```
+
 Open GraphQL Playground at [localhost:4000](http://localhost:4000/) and try these operations:
 
 ```graphql
 mutation {
-  register(user: { username: "loren", password: "pass" })
+  register(user: { username: "loren", password: "0d6be69b264717f2dd33652e212b173104b4a647b7c11ae72e9885f11cd312fb" })
 }
 
 mutation {
   authenticate(
     serviceName: "password"
-    params: { password: "pass", user: { username: "loren" } }
+    params: { user: { username: "loren" }, password: "0d6be69b264717f2dd33652e212b173104b4a647b7c11ae72e9885f11cd312fb" }
   ) {
     tokens {
       accessToken
