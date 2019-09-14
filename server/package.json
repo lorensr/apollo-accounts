@@ -1,6 +1,6 @@
 {
   "name": "apollo-accounts-password-server",
-  "version": "0.3.0-beta.26",
+  "version": "0.3.0-beta.26-1",
   "description": "Fullstack accounts for Apollo: server side",
   "main": "dist/index.js",
   "scripts": {

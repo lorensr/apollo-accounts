@@ -63,7 +63,7 @@ export const createApolloAccounts = ({ db, ...givenOptions }) => {
   const accountsServer = new AccountsServer(
     { db: dbManager, ...options },
     {
-      password: new AccountsPassword({ passwordHashAlgorithm: 'sha256' })
+      password: new AccountsPassword()
     }
   )
 
