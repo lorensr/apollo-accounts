@@ -1,5 +1,7 @@
 ## Apollo Accounts Password
 
+_**Deprecated:** This repo is out of date with the underlying [`accounts-js`](https://www.accountsjs.com/) library. We recommend using `accounts-js` directly. Some of the below documentation may still be helpful._
+
 Full-stack JS accounts system for Apollo and MongoDB
 
 [Compatible](#meteor-compatibility) with Meteor's `accounts-password`.
